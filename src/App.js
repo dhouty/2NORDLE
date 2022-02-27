@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import Board from './Board';
+import Keyboard from './Keyboard';
 import './App.css';
 
 function App() {
+  const words = [
+    ['t', 'r', 'a', 'p', 's'],
+    ['c', 'o', 'u', 'l', 'd'],
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Board words={words} />
+      <Keyboard />
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.Letter {
+    display: inline-block;
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 3px;
+    font-weight: bold;
+}

@@ -1,0 +1,19 @@
+- Choose n where the number of boards is n^2 (i.e. 2^0 = 1, 2^1 = 2, 2^2 = 4, ...)
+    - Should we support non-square numbers?
+- Choose the number of letters in each word
+- Dark mode / light mode
+- Choose emoji export format
+- Choose color scheme for close and exact matches
+- Allow to move cursor so you don't have to keep backspacing
+- Show if the word is valid or not
+- Choose board switching mode
+    - Scrolling vs paging (one board per page with easy nav)
+- Nice animations
+- Multi-language support
+- Donation button
+- Daily games and free play
+- Make sure words are not too obscure so keep a curated list
+- Share results
+    - Via emojis
+    - Other cool mechanism?
+- Share game with others so they can try
