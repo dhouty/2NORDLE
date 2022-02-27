@@ -1,3 +1,4 @@
+import TopBar from './TopBar';
 import Board from './Board';
 import Keyboard from './Keyboard';
 import './App.css';
@@ -9,7 +10,8 @@ function App() {
   ];
 
   return (
-    <div className="App">
+    <div className="app">
+      <TopBar />
       <Board words={words} />
       <Keyboard />
     </div>

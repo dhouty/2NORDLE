@@ -10,12 +10,12 @@ const layout = {
 };
 
 const display = {
-    '{bksp}': 'DELETE',
-    '{enter}': 'SUBMIT',
+    '{bksp}': '⌫',
+    '{enter}': '⏎',
 }
 
 function Keyboard() {
-    return <SimpleKeyboard layout={layout} display={display} />
+    return <SimpleKeyboard theme="hg-theme-default keyboard" layout={layout} display={display} />
 }
 
 export default Keyboard;
