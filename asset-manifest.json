@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/2NORDLE/static/css/main.7e10cd3a.css",
+    "main.js": "/2NORDLE/static/js/main.a5af3bd0.js",
+    "static/js/787.2a1bd4fe.chunk.js": "/2NORDLE/static/js/787.2a1bd4fe.chunk.js",
+    "index.html": "/2NORDLE/index.html",
+    "main.7e10cd3a.css.map": "/2NORDLE/static/css/main.7e10cd3a.css.map",
+    "main.a5af3bd0.js.map": "/2NORDLE/static/js/main.a5af3bd0.js.map",
+    "787.2a1bd4fe.chunk.js.map": "/2NORDLE/static/js/787.2a1bd4fe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e10cd3a.css",
+    "static/js/main.a5af3bd0.js"
+  ]
+}
