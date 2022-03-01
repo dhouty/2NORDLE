@@ -1,5 +1,8 @@
 import SimpleKeyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
+import './Keyboard.css';
+
+const theme = 'hg-theme-default keyboard';
 
 const layout = {
     default: [
@@ -15,7 +18,11 @@ const display = {
 }
 
 function Keyboard() {
-    return <SimpleKeyboard theme="hg-theme-default keyboard" layout={layout} display={display} />
+    return <SimpleKeyboard
+        theme={theme}
+        layout={layout}
+        display={display}
+    />
 }
 
 export default Keyboard;
