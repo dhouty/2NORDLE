@@ -1,0 +1,56 @@
+name: Development Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/workflows/**'
+      - '**.md'
+
+env:
+  URL: dev.2nordle.com
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: development
+      url: https://${{ env.URL }}
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+      
+      - name: Set GitHub Actions as Commit Author
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+          
+      - name: Checkout Source Repo
+        uses: actions/checkout@v3
+        with:
+          path: source
+      
+      - name: Build
+        run: |
+          cd source
+          npm install
+          npm run build
+          cd ..
+      
+      - name: Checkout Target Repo
+        uses: actions/checkout@v3
+        with:
+          repository: dhouty/2NORDLE-dev
+          ref: gh-pages
+          path: target
+          token: ${{ secrets.BOT_PAT }}
+      
+      - name: Push Files to Target
+        run: |
+          cp -r source/build/* target
+          cd target
+          git add .
+          git commit -m $GITHUB_SHA
+          git push
