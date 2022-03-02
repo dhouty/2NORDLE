@@ -12,7 +12,6 @@
     "react-simple-keyboard": "^3.4.69",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "http://dhouty.github.io/2NORDLE",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
