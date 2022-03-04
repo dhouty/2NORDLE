@@ -1,8 +1,8 @@
-import Word from './Word';
+import Guess from './Guess';
 
 function Board(props) {
     return <div>
-        {props.words.map(word => <Word letters={word} />)}
+        {props.guesses.map(guess => <Guess letters={guess} />)}
     </div>
 }
 

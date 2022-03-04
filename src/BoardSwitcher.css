@@ -1,0 +1,16 @@
+.board-switcher {
+    text-align: center;
+    background-color: gray;
+    display: flex;
+}
+
+.board-switcher .current-board {
+    flex-grow: 1;
+}
+
+.board-switcher .previous-button, .board-switcher .next-button {
+    flex-grow: 0;
+    height: 40px;
+    width: 40px;
+}
+
