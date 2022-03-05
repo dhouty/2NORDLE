@@ -6,7 +6,13 @@ import BoardSwitcher from './BoardSwitcher';
 import Keyboard from './Keyboard';
 
 function Game(props) {
-    const [boards, setBoards] = useState(Array(props.totalBoardCount).fill({ guesses: [] }));
+    // const boards = Array(props.totalBoardCount).fill({ guesses: [] });
+    const [boards, setBoards] = useState([
+        { guesses: [['a', 'b', 'c']]},
+        { guesses: [['x', 'y', 'z'], ['f', 'o', 'o'], ['b', 'a', 'r']]},
+    ]);
+
+    const [currentGuess, setCurrentGuess] = useState([]);
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
 
     function handlePrevious() {
@@ -21,6 +27,25 @@ function Game(props) {
         }
     }
 
+    function submitGuess() {
+        console.log('submit');
+        for (const board of boards) {
+            board.guesses.push(currentGuess);
+        }
+        console.log(boards);
+        setBoards(boards);
+    }
+
+    function removeLetter() {
+        console.log('remove');
+        setCurrentGuess(currentGuess.slice(0, -1));
+    }
+
+    function addLetter(letter) {
+        console.log('add', letter);
+        setCurrentGuess([...currentGuess, letter]);
+    }
+
     return <>
         <TopBar />
         <Board guesses={boards[currentBoardIndex].guesses} />
@@ -30,7 +55,11 @@ function Game(props) {
             handlePrevious={handlePrevious}
             handleNext={handleNext}
         />
-        <Keyboard />
+        <Keyboard
+            onSubmit={submitGuess}
+            onBackspace={removeLetter}
+            onNewLetter={addLetter}
+        />
     </>
 }
 

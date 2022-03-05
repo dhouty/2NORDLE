@@ -17,11 +17,22 @@ const display = {
     '{enter}': '⏎',
 }
 
-function Keyboard() {
+function Keyboard(props) {
+    function onKeyPress(button) {
+        if (button === '{enter}') {
+            props.onSubmit();
+        } else if (button === '{bksp}') {
+            props.onBackspace();
+        } else {
+            props.onNewLetter(button);
+        }
+    }
+
     return <SimpleKeyboard
         theme={theme}
         layout={layout}
         display={display}
+        onKeyPress={onKeyPress}
     />
 }
 
