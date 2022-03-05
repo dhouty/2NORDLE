@@ -1,19 +1,18 @@
 import { useState } from 'react';
 
-import TopBar from './TopBar';
-import Board from './Board';
-import BoardSwitcher from './BoardSwitcher';
-import Keyboard from './Keyboard';
+import { TopBar } from './TopBar';
+import { Board } from './Board';
+import { BoardSwitcher } from './BoardSwitcher';
+import { Keyboard } from './Keyboard';
+import { Guess } from './Guess';
 
-function Game(props) {
-    // const boards = Array(props.totalBoardCount).fill({ guesses: [] });
-    const [boards, setBoards] = useState([
-        { guesses: [['a', 'b', 'c']]},
-        { guesses: [['x', 'y', 'z'], ['f', 'o', 'o'], ['b', 'a', 'r']]},
-    ]);
+import { getRandomWords, isValidWord } from './dictionary';
 
-    const [currentGuess, setCurrentGuess] = useState([]);
+export function Game({ wordLength, totalGuesses, totalBoards }) {
+    const words = getRandomWords(totalBoards, wordLength);
+    const [boards, setBoards] = useState(words.map((word) => ({ word, guesses: [] })));
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
+    const [currentGuess, setCurrentGuess] = useState('');
 
     function handlePrevious() {
         if (currentBoardIndex > 0) {
@@ -22,36 +21,36 @@ function Game(props) {
     }
 
     function handleNext() {
-        if (currentBoardIndex < props.totalBoardCount - 1) {
+        if (currentBoardIndex < totalBoards - 1) {
             setCurrentBoardIndex(currentBoardIndex + 1);
         }
     }
 
     function submitGuess() {
-        console.log('submit');
-        for (const board of boards) {
-            board.guesses.push(currentGuess);
+        if (isValidWord(currentGuess, wordLength)) {
+            for (const board of boards) {
+                board.guesses.push(currentGuess);
+            }
+
+            setBoards(boards);
         }
-        console.log(boards);
-        setBoards(boards);
     }
 
     function removeLetter() {
-        console.log('remove');
         setCurrentGuess(currentGuess.slice(0, -1));
     }
 
     function addLetter(letter) {
-        console.log('add', letter);
         setCurrentGuess([...currentGuess, letter]);
     }
 
-    return <>
+    return <div className='game'>
         <TopBar />
         <Board guesses={boards[currentBoardIndex].guesses} />
+        <Guess wordLength={wordLength} />
         <BoardSwitcher
             currentBoardNumber={currentBoardIndex + 1}
-            totalBoardCount={props.totalBoardCount}
+            totalBoards={totalBoards}
             handlePrevious={handlePrevious}
             handleNext={handleNext}
         />
@@ -60,7 +59,5 @@ function Game(props) {
             onBackspace={removeLetter}
             onNewLetter={addLetter}
         />
-    </>
+    </div>
 }
-
-export default Game;

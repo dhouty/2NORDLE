@@ -1,9 +1,7 @@
-import Letter from './Letter';
+import { Letter } from './Letter';
 
-function Guess(props) {
-    return <div>
-        {props.letters.map(letter => <Letter letter={letter} />)}
+export function Guess({ letters }) {
+    return <div className='guess'>
+        {letters.map(letter => <Letter letter={letter} />)}
     </div>
 }
-
-export default Guess;

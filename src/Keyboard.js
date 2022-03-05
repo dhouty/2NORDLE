@@ -1,5 +1,6 @@
 import SimpleKeyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
+
 import './Keyboard.css';
 
 const theme = 'hg-theme-default keyboard';
@@ -17,14 +18,14 @@ const display = {
     '{enter}': '⏎',
 }
 
-function Keyboard(props) {
+export function Keyboard({ onSubmit, onBackspace, onNewLetter }) {
     function onKeyPress(button) {
         if (button === '{enter}') {
-            props.onSubmit();
+            onSubmit();
         } else if (button === '{bksp}') {
-            props.onBackspace();
+            onBackspace();
         } else {
-            props.onNewLetter(button);
+            onNewLetter(button);
         }
     }
 
@@ -35,5 +36,3 @@ function Keyboard(props) {
         onKeyPress={onKeyPress}
     />
 }
-
-export default Keyboard;

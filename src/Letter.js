@@ -1,7 +1,5 @@
 import './Letter.css';
 
-function Letter(props) {
-    return <div className="letter">{props.letter?.toUpperCase()}</div>;
+export function Letter({ letter }) {
+    return <div className='letter'>{letter?.toUpperCase()}</div>;
 }
-
-export default Letter;

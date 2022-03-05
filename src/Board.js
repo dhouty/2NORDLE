@@ -1,9 +1,7 @@
-import Guess from './Guess';
+import { Guess } from './Guess';
 
-function Board(props) {
+export function Board({ guesses }) {
     return <div>
-        {props.guesses.map(guess => <Guess letters={guess} />)}
+        {guesses.map(guess => <Guess letters={guess} />)}
     </div>
 }
-
-export default Board;

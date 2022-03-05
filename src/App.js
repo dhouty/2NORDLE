@@ -1,12 +1,15 @@
-import Game from './Game';
+import { Game } from './Game';
+
 import './App.css';
 
-function App() {
+export function App() {
   return (
-    <div className="app">
-      <Game totalBoardCount={2} />
+    <div className='app'>
+      <Game
+        wordLength={5}
+        totalGuesses={6}
+        totalBoards={2}
+      />
     </div>
   );
 }
-
-export default App;
