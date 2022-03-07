@@ -1,9 +1,17 @@
 .letter {
     display: inline-block;
     margin: 5px;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background-color: grey;
     border-radius: 3px;
     font-weight: bold;
+}
+
+.letter.exact {
+    background-color: green;
+}
+
+.letter.close {
+    background-color: yellow;
 }

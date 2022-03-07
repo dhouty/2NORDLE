@@ -1,5 +1,5 @@
 import './Letter.css';
 
-export function Letter({ letter }) {
-    return <div className='letter'>{letter?.toUpperCase()}</div>;
+export function Letter({ letter, type }) {
+    return <div className={`letter ${type}`}>{letter?.toUpperCase()}</div>;
 }
