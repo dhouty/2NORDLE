@@ -1,4 +1,4 @@
-import { Letter } from './Letter';
+import { Letter } from '../letter/Letter';
 
 export function Guess({ letters }) {
     return <div className='guess'>

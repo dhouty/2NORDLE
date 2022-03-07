@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { TopBar } from './TopBar';
-import { Board } from './Board';
-import { BoardSwitcher } from './BoardSwitcher';
-import { Keyboard } from './Keyboard';
-import { Guess } from './Guess';
+import { TopBar } from '../topBar/TopBar';
+import { Board } from '../board/Board';
+import { BoardSwitcher } from '../boardSwitcher/BoardSwitcher';
+import { Keyboard } from '../keyboard/Keyboard';
+import { Guess } from '../guess/Guess';
 
-import { getRandomWords, isValidWord } from './dictionary';
+import { getRandomWords, isValidWord } from '../../dictionary';
 
 export function Game({ wordLength, totalGuesses, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);

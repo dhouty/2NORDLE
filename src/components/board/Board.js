@@ -1,4 +1,4 @@
-import { Guess } from './Guess';
+import { Guess } from '../guess/Guess';
 
 export function Board({ guesses }) {
     return <div>
