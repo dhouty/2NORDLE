@@ -7,7 +7,7 @@ import { Keyboard } from '../keyboard/Keyboard';
 import { Guess } from '../guess/Guess';
 
 import { getRandomWords } from '../../dictionary';
-import { GuessModel } from '../../models/guess';
+import { GuessModel } from '../../models/GuessModel';
 
 export function Game({ wordLength, totalGuesses, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);
