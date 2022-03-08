@@ -7,7 +7,7 @@ export function getRandomWords(count, length) {
         randomIndexes.add(Math.floor(Math.random() * availableWords.length));
     }
 
-    return Array.from(randomIndexes).map(availableWords.at)
+    return Array.from(randomIndexes).map((i) => availableWords[i]);
 }
 
 // Checks that the word is in the dictionary

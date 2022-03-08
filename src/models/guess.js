@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-import { isValidWord } from './dictionary';
+import { isValidWord } from '../dictionary';
 
 const LETTER_REGEX = /^[A-Z]$/;
 
-export class Guess {
+export class GuessModel {
     constructor(length) {
         this.length = length;
-        this.guess = Array(length).fill(null);
+        this.guess = Array(length).fill({ type: 'blank' });
         this.cursor = 0;
     }
 
@@ -25,7 +25,7 @@ export class Guess {
             this.setCursor(this.cursor - 1);
         }
 
-        this.guess[this.cursor] = null;
+        this.guess[this.cursor] = { type: 'blank' };
 
         if (!preShift) {
             this.setCursor(this.cursor - 1);

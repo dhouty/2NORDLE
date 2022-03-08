@@ -6,13 +6,14 @@ import { BoardSwitcher } from '../boardSwitcher/BoardSwitcher';
 import { Keyboard } from '../keyboard/Keyboard';
 import { Guess } from '../guess/Guess';
 
-import { getRandomWords, isValidWord } from '../../dictionary';
+import { getRandomWords } from '../../dictionary';
+import { GuessModel } from '../../models/guess';
 
 export function Game({ wordLength, totalGuesses, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);
     const [boards, setBoards] = useState(words.map((word) => ({ word, guesses: [] })));
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
-    const [currentGuess, setCurrentGuess] = useState('');
+    const [currentGuess, setCurrentGuess] = useState(new GuessModel(wordLength));
 
     function handlePrevious() {
         if (currentBoardIndex > 0) {
@@ -27,9 +28,10 @@ export function Game({ wordLength, totalGuesses, totalBoards }) {
     }
 
     function submitGuess() {
-        if (isValidWord(currentGuess, wordLength)) {
+        if (currentGuess.isValid()) {
             for (const board of boards) {
-                board.guesses.push(currentGuess);
+                const result = currentGuess.compare(board.word);
+                board.guesses.push(result);
             }
 
             setBoards(boards);
@@ -37,17 +39,19 @@ export function Game({ wordLength, totalGuesses, totalBoards }) {
     }
 
     function removeLetter() {
-        setCurrentGuess(currentGuess.slice(0, -1));
+        currentGuess.removeLetter();
+        setCurrentGuess(currentGuess);
     }
 
     function addLetter(letter) {
-        setCurrentGuess([...currentGuess, letter]);
+        currentGuess.addLetter(letter);
+        setCurrentGuess(currentGuess);
     }
 
     return <div className='game'>
         <TopBar />
         <Board guesses={boards[currentBoardIndex].guesses} />
-        <Guess wordLength={wordLength} />
+        <Guess letters={currentGuess.guess} />
         <BoardSwitcher
             currentBoardNumber={currentBoardIndex + 1}
             totalBoards={totalBoards}
