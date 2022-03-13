@@ -1,7 +1,14 @@
-import { Guess } from '../guess/Guess';
+import { Board } from 'types/Board'
+import { GuessView } from 'components/guess';
 
-export function Board({ guesses }) {
-    return <div>
-        {guesses.map(guess => <Guess letters={guess} />)}
+export interface BoardProps {
+    board: Board;
+}
+
+export function BoardView({ board }: BoardProps) {
+    return <div className='board'>
+        {board.guesses.map((guess, index) => {
+            return <GuessView key={index} guess={guess} />
+        })}
     </div>
 }

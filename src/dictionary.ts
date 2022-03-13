@@ -1,8 +1,8 @@
 // Gets a list of random words of the given length
-export function getRandomWords(count, length) {
+export function getRandomWords(count: number, length: number): string[] {
     const availableWords = DICTIONARY[length];
 
-    const randomIndexes = new Set();
+    const randomIndexes = new Set<number>();
     while (randomIndexes.size < count) {
         randomIndexes.add(Math.floor(Math.random() * availableWords.length));
     }
@@ -11,12 +11,12 @@ export function getRandomWords(count, length) {
 }
 
 // Checks that the word is in the dictionary
-export function isValidWord(word, length) {
+export function isValidWord(word: string, length: number): boolean {
     return DICTIONARY[length].includes(word); // TODO: optimize?
 }
 
 // Available words organized by length
-const DICTIONARY = {
+const DICTIONARY: { [length: number]:  string[] } = {
     5: [
         'STUFF',
         'STING',

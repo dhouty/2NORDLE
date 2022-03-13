@@ -1,6 +1,6 @@
 import './TopBar.css';
 
-export function TopBar() {
+export function TopBarView() {
     return <div className='top-bar'>
         <span className='title'>
             <span className='start'>2&#x1d3a;</span>

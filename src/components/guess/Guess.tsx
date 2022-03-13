@@ -1,9 +1,14 @@
-import { Letter } from '../letter/Letter';
+import { Guess } from 'types/Guess';
+import { LetterView } from 'components/letter';
 
-export function Guess({ letters }) {
+export interface GuessProps {
+    guess: Guess;
+}
+
+export function GuessView({ guess }: GuessProps) {
     return <div className='guess'>
-        {letters.map(({ letter, type }, index) => {
-            return <Letter key={index} letter={letter} type={type} />
+        {guess.letters.map((letter, index) => {
+            return <LetterView key={index} letter={letter} />
         })}
     </div>
 }

@@ -1,6 +1,6 @@
 import './BoardSwitcher.css';
 
-export function BoardSwitcher({ handlePrevious, handleNext, currentBoardNumber, totalBoards }) {
+export function BoardSwitcherView({ handlePrevious, handleNext, currentBoardNumber, totalBoards }) {
     return <div className='board-switcher'>
         <div className='previous-button' onClick={handlePrevious}>&#60;</div>
         <div className='current-board'>{currentBoardNumber} / {totalBoards}</div>

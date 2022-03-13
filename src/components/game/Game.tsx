@@ -9,7 +9,7 @@ import { Guess } from '../guess/Guess';
 import { getRandomWords } from '../../dictionary';
 import { GuessModel } from '../../models/GuessModel';
 
-export function Game({ wordLength, totalGuesses, totalBoards }) {
+export function GameView({ wordLength, totalGuesses, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);
     const [boards, setBoards] = useState(words.map((word) => ({ word, guesses: [] })));
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);

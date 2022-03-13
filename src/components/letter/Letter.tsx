@@ -1,10 +1,10 @@
+import { Letter } from 'types/Letter';
 import './Letter.css';
 
-interface LetterProps {
-    value: string;
-    type: 'blank' | 'close' | 'exact';
+export interface LetterProps {
+    letter: Letter;
 }
 
-export function Letter({ value, type }: LetterProps) {
-    return <div className={`letter ${type}`}>{value}</div>;
+export function LetterView({ letter }: LetterProps) {
+    return <div className={`letter ${letter.type}`}>{letter.value}</div>
 }

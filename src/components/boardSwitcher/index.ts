@@ -1,0 +1,1 @@
+export { BoardSwitcherView } from './BoardSwitcher';
