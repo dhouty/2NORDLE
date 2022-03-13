@@ -1,7 +1,7 @@
 import { GameView } from 'components/game';
 import './App.css';
 
-export function App() {
+export function AppView() {
     return <div className='app'>
         <GameView
             wordLength={5}
