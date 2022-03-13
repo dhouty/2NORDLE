@@ -1,5 +1,6 @@
 import { Board } from 'types/Board'
 import { GuessView } from 'components/guess';
+import './Board.css';
 
 export interface BoardProps {
     board: Board;
