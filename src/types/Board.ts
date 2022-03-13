@@ -2,6 +2,6 @@ import { Guess } from './Guess';
 
 export interface Board {
     word: string;
-    solved: true;
+    solved: boolean;
     guesses: Guess[];
 }

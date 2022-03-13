@@ -17,3 +17,4 @@
     - Via emojis
     - Other cool mechanism?
 - Share game with others so they can try
+- Google analytics so I can tell how many people are playing

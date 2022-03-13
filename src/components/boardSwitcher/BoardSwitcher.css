@@ -4,13 +4,14 @@
     display: flex;
     text-align: center;
     align-items: center;
-    background-color: #eee;
+    background-color: #ececec;
 }
 
 .board-switcher .board-list {
     flex-grow: 1;
     display: flex;
     overflow: auto;
+    justify-content: center;
 }
 
 .board-switcher .board-list .board-shortcut {

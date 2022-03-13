@@ -1,19 +1,18 @@
 import { useState } from 'react';
 
-import { TopBar } from '../topBar/TopBar';
-import { Board } from '../board/Board';
-import { BoardSwitcher } from '../boardSwitcher/BoardSwitcher';
-import { Keyboard } from '../keyboard/Keyboard';
-import { Guess } from '../guess/Guess';
+import { TopBarView } from 'components/topBar';
+import { BoardView } from 'components/board';
+import { BoardSwitcherView } from 'components/boardSwitcher';
+import { KeyboardView } from 'components/keyboard';
+import './Game.css';
 
 import { getRandomWords } from '../../dictionary';
-import { GuessModel } from '../../models/GuessModel';
+import { Board } from 'types';
 
 export function GameView({ wordLength, totalGuesses, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);
-    const [boards, setBoards] = useState(words.map((word) => ({ word, guesses: [] })));
+    const [boards, setBoards] = useState<Board[]>(words.map((word) => ({ word, solved: false, guesses: [] })));
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
-    const [currentGuess, setCurrentGuess] = useState(new GuessModel(wordLength));
 
     function handlePrevious() {
         if (currentBoardIndex > 0) {
@@ -28,37 +27,34 @@ export function GameView({ wordLength, totalGuesses, totalBoards }) {
     }
 
     function submitGuess() {
-        if (currentGuess.isValid()) {
-            for (const board of boards) {
-                const result = currentGuess.compare(board.word);
-                board.guesses.push(result);
-            }
 
-            setBoards(boards);
-        }
     }
 
     function removeLetter() {
-        currentGuess.removeLetter();
-        setCurrentGuess(currentGuess);
+
     }
 
     function addLetter(letter) {
-        currentGuess.addLetter(letter);
-        setCurrentGuess(currentGuess);
+
     }
 
     return <div className='game'>
-        <TopBar />
-        <Board guesses={boards[currentBoardIndex].guesses} />
-        <Guess letters={currentGuess.guess} />
-        <BoardSwitcher
-            currentBoardNumber={currentBoardIndex + 1}
-            totalBoards={totalBoards}
+        <TopBarView />
+
+        <div className='boards'>
+            {boards.map((board) => {
+                return <BoardView board={board} />
+            })}
+        </div>
+
+        <BoardSwitcherView
             handlePrevious={handlePrevious}
             handleNext={handleNext}
+            boards={boards}
+            currentBoardIndex={currentBoardIndex}
         />
-        <Keyboard
+        
+        <KeyboardView
             onSubmit={submitGuess}
             onBackspace={removeLetter}
             onNewLetter={addLetter}

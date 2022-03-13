@@ -26,7 +26,7 @@ export function BoardSwitcherView({
                     active: index === currentBoardIndex,
                 });
                 
-                return <div className={classes}>{index}</div>
+                return <div className={classes}>{index + 1}</div>
             })}
         </div>
 

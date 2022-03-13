@@ -1,83 +1,86 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 
-import { isValidWord } from '../dictionary';
+// import { isValidWord } from '../dictionary';
 
-const LETTER_REGEX = /^[A-Z]$/;
+// const LETTER_REGEX = /^[A-Z]$/;
 
-export class GuessModel {
-    constructor(length) {
-        this.length = length;
-        this.guess = Array(length).fill({ type: 'blank' });
-        this.cursor = 0;
-    }
+// export class GuessModel {
+//     private length: number;
+//     private guess:
 
-    addLetter(letter) {
-        if (LETTER_REGEX.test(letter) && this.cursor < this.length) {
-            this.guess[this.cursor] = { letter };
-            this.setCursor(this.cursor + 1);
-        }
-    }
+//     constructor(length) {
+//         this.length = length;
+//         this.guess = Array(length).fill({ type: 'blank' });
+//         this.cursor = 0;
+//     }
 
-    removeLetter() {
-        const preShift = !this.guess[this.cursor];
+//     addLetter(letter) {
+//         if (LETTER_REGEX.test(letter) && this.cursor < this.length) {
+//             this.guess[this.cursor] = { letter };
+//             this.setCursor(this.cursor + 1);
+//         }
+//     }
 
-        if (preShift) {
-            this.setCursor(this.cursor - 1);
-        }
+//     removeLetter() {
+//         const preShift = !this.guess[this.cursor];
 
-        this.guess[this.cursor] = { type: 'blank' };
+//         if (preShift) {
+//             this.setCursor(this.cursor - 1);
+//         }
 
-        if (!preShift) {
-            this.setCursor(this.cursor - 1);
-        }
-    }
+//         this.guess[this.cursor] = { type: 'blank' };
 
-    isValid() {
-        let word = '';
+//         if (!preShift) {
+//             this.setCursor(this.cursor - 1);
+//         }
+//     }
 
-        for (const { letter } of this.guess) {
-            if (LETTER_REGEX.test(letter)) {
-                word += letter;
-            } else {
-                return false;
-            }
-        }
+//     isValid() {
+//         let word = '';
 
-        return isValidWord(word, this.length);
-    }
+//         for (const { letter } of this.guess) {
+//             if (LETTER_REGEX.test(letter)) {
+//                 word += letter;
+//             } else {
+//                 return false;
+//             }
+//         }
+
+//         return isValidWord(word, this.length);
+//     }
 
 
-    compare(word) {
-        const letters = word.split('');
-        const result = _.cloneDeep(this.guess);
+//     compare(word) {
+//         const letters = word.split('');
+//         const result = _.cloneDeep(this.guess);
 
-        for (let i = 0; i < result.length; i++) {
-            if (result[i].letter === letters[i]) {
-                result[i].type = 'exact';
-                letters[i] = null;
-            }
-        }
+//         for (let i = 0; i < result.length; i++) {
+//             if (result[i].letter === letters[i]) {
+//                 result[i].type = 'exact';
+//                 letters[i] = null;
+//             }
+//         }
 
-        for (let i = 0; i < result.length; i++) {
-            if (!result[i].type) {
-                const j = letters.indexOf(result[i].letter);
-                if (j >= 0) {
-                    result[i].type = 'close';
-                    letters[j] = null;
-                } else {
-                    result[i].type = 'miss';
-                }
-            }
-        }
+//         for (let i = 0; i < result.length; i++) {
+//             if (!result[i].type) {
+//                 const j = letters.indexOf(result[i].letter);
+//                 if (j >= 0) {
+//                     result[i].type = 'close';
+//                     letters[j] = null;
+//                 } else {
+//                     result[i].type = 'miss';
+//                 }
+//             }
+//         }
 
-        return result;
-    }
+//         return result;
+//     }
 
-    getCursor() {
-        return this.cursor;
-    }
+//     getCursor() {
+//         return this.cursor;
+//     }
 
-    setCursor(index) {
-        this.cursor = _.clamp(index, 0, this.length);
-    }
-}
+//     setCursor(index) {
+//         this.cursor = _.clamp(index, 0, this.length);
+//     }
+// }

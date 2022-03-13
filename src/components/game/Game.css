@@ -1,0 +1,9 @@
+.game {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game .boards {
+    flex-grow: 1;
+}
