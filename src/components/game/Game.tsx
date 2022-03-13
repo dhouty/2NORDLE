@@ -6,12 +6,12 @@ import { BoardSwitcherView } from 'components/boardSwitcher';
 import { KeyboardView } from 'components/keyboard';
 import './Game.css';
 
-import { getRandomWords } from '../../dictionary';
+import { getRandomWords } from 'utils/dictionary';
 import { Board } from 'types';
 
-export function GameView({ wordLength, totalGuesses, totalBoards }) {
+export function GameView({ wordLength, totalBoards }) {
     const words = getRandomWords(totalBoards, wordLength);
-    const [boards, setBoards] = useState<Board[]>(words.map((word) => ({ word, solved: false, guesses: [] })));
+    const [boards] = useState<Board[]>(words.map((word) => ({ word, solved: false, guesses: [] })));
     const [currentBoardIndex, setCurrentBoardIndex] = useState(0);
 
     function handlePrevious() {
@@ -53,7 +53,7 @@ export function GameView({ wordLength, totalGuesses, totalBoards }) {
             boards={boards}
             currentBoardIndex={currentBoardIndex}
         />
-        
+
         <KeyboardView
             onSubmit={submitGuess}
             onBackspace={removeLetter}

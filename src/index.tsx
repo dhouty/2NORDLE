@@ -4,8 +4,8 @@ import './index.css';
 import { AppView } from 'components/app';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppView />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <AppView />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
