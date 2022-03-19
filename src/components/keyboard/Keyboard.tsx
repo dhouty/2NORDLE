@@ -17,8 +17,14 @@ const display = {
     '{enter}': '⏎',
 }
 
-export function KeyboardView({ onSubmit, onBackspace, onNewLetter }) {
-    function onKeyPress(button) {
+export interface KeyboardProps {
+    onSubmit: () => void;
+    onBackspace: () => void;
+    onNewLetter: (letter: string) => void;
+}
+
+export function KeyboardView({ onSubmit, onBackspace, onNewLetter }: KeyboardProps) {
+    function onKeyPress(button: string) {
         if (button === '{enter}') {
             onSubmit();
         } else if (button === '{bksp}') {

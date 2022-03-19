@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { TopBarView } from 'components/topBar';
 import { BoardView } from 'components/board';
@@ -22,7 +22,7 @@ export function GameView({ wordLength, totalGuesses, totalBoards }) {
 
     useMountedEffect(() => {
         boardsRef.current[currentBoardIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }), [currentBoardIndex];
+    }, [currentBoardIndex]);
 
     function handlePrevious() {
         if (currentBoardIndex > 0) {
@@ -48,7 +48,7 @@ export function GameView({ wordLength, totalGuesses, totalBoards }) {
 
     }
 
-    function addLetter(letter) {
+    function addLetter(letter: string) {
 
     }
 
