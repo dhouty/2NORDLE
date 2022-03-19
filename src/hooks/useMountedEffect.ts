@@ -9,5 +9,5 @@ export const useMountedEffect = (effect: React.EffectCallback, deps?: React.Depe
         } else {
             mounted.current = true;
         }
-    }, deps);
+    }, deps); // eslint-disable-line react-hooks/exhaustive-deps
 }
