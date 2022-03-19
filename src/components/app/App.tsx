@@ -6,7 +6,7 @@ export function AppView() {
         <GameView
             wordLength={5}
             totalGuesses={6}
-            totalBoards={2}
+            totalBoards={8}
         />
     </div>
 }

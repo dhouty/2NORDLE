@@ -6,6 +6,7 @@ import './BoardSwitcher.css';
 export interface BoardSwitcherProps {
     handlePrevious: () => void;
     handleNext: () => void;
+    handleShortcut: (index: number) => void;
     boards: Board[];
     currentBoardIndex: number;
 }
@@ -13,6 +14,7 @@ export interface BoardSwitcherProps {
 export function BoardSwitcherView({
     handlePrevious,
     handleNext,
+    handleShortcut,
     boards,
     currentBoardIndex
 }: BoardSwitcherProps) {
@@ -26,7 +28,7 @@ export function BoardSwitcherView({
                     active: index === currentBoardIndex,
                 });
                 
-                return <div className={classes} key={index}>{index + 1}</div>
+                return <div className={classes} key={index} onClick={() => handleShortcut(index)}>{index + 1}</div>
             })}
         </div>
 

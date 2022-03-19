@@ -2,6 +2,7 @@
     width: 100%;
     height: 40px;
     display: flex;
+    flex: none;
     text-align: center;
     align-items: center;
     background-color: #ececec;

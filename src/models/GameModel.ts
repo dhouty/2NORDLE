@@ -11,14 +11,14 @@ export class GameModel {
     ) {
         const words = getRandomWords(totalBoards, wordLength);
 
-        this.boards = words.map((word) => {
+        this.boards = words.map((word, index) => {
             return {
                 word,
                 solved: false,
                 guesses: [...Array(totalGuesses)].map(() => {
                     return {
                         letters: [...Array(wordLength)].map(() => {
-                            return { value: '', type: 'blank' };
+                            return { value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[index], type: 'miss' };
                         }),
                     };
                 }),
