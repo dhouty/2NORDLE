@@ -25,6 +25,11 @@
     flex: none;
 }
 
+.board-switcher .board-list .board-shortcut.active {
+    animation: activeBoardShortcut 2s ease 0s infinite alternate;
+
+}
+
 .board-switcher .board-list .board-shortcut.solved {
     background-color: #5cc259;
 }
@@ -34,4 +39,14 @@
     width: 40px;
     height: 40px;
     line-height: 40px;
+}
+
+@keyframes activeBoardShortcut {
+    from {
+        filter: brightness(0.95);
+    }
+
+    to {
+        filter: brightness(0.75);
+    }
 }
