@@ -19,7 +19,7 @@ export function BoardSwitcherView({
     currentBoardIndex
 }: BoardSwitcherProps) {
     return <div className='board-switcher'>
-        <div className='previous-button' onClick={handlePrevious}>&#x25c0;</div>
+        <div className='previous-button' onClick={handlePrevious}>&#x25c0;&#xfe0e;</div>
 
         <div className='board-list'>
             {boards.map(({ solved }, index) => {
@@ -27,11 +27,11 @@ export function BoardSwitcherView({
                     solved,
                     active: index === currentBoardIndex,
                 });
-                
+
                 return <div className={classes} key={index} onClick={() => handleShortcut(index)}>{index + 1}</div>
             })}
         </div>
 
-        <div className='next-button' onClick={handleNext}>&#x25b6;</div>
+        <div className='next-button' onClick={handleNext}>&#x25b6;&#xfe0e;</div>
     </div>
 }
