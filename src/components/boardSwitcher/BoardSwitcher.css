@@ -26,7 +26,7 @@
 }
 
 .board-switcher .board-list .board-shortcut.active {
-    animation: activeBoardShortcut 2s ease 0s infinite alternate;
+    animation: activeBoardShortcut 2s ease 0.1s infinite alternate;
 
 }
 
@@ -43,10 +43,10 @@
 
 @keyframes activeBoardShortcut {
     from {
-        filter: brightness(0.95);
+        filter: brightness(1);
     }
 
     to {
-        filter: brightness(0.75);
+        filter: brightness(0.70);
     }
 }

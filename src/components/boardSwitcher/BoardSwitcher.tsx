@@ -22,9 +22,9 @@ export function BoardSwitcherView({
         <div className='previous-button' onClick={handlePrevious}>&#x25c0;</div>
 
         <div className='board-list'>
-            {boards.map((board, index) => {
+            {boards.map(({ solved }, index) => {
                 const classes = classNames('board-shortcut', {
-                    solved: board.solved,
+                    solved,
                     active: index === currentBoardIndex,
                 });
                 
